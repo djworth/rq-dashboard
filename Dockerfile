@@ -4,14 +4,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		dos2unix \
 		gcc \
 		libc-dev \
+		git \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV TINI_VERSION v0.13.2
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
-ENV RQ_VERSION 0.7.1
-RUN pip install rq==$RQ_VERSION
+ENV RQ_VERSION 0.8.0
+RUN pip install -e git+https://github.com/zodiacmetrics/rq@v0.8.0#egg=rq
 
 ADD autoexec.sh /
 RUN dos2unix /autoexec.sh
