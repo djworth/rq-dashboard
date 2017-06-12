@@ -12,7 +12,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
 ENV RQ_VERSION 0.8.0
-RUN pip install -e git+https://github.com/zodiacmetrics/rq@v0.8.0#egg=rq
+RUN pip install rq==${RQ_VERSION}
 
 ADD autoexec.sh /
 RUN dos2unix /autoexec.sh
